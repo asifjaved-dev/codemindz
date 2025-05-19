@@ -1,6 +1,6 @@
-import { db } from '../../../lib/db';
+import { db } from '@/lib/db';
 
-export async function POST(req) {
+export async function POST(req:any) {
     try {
         const body = await req.json();
         const email = body?.email;
@@ -18,7 +18,8 @@ export async function POST(req) {
                 [email],
                 (err, result) => {
                     if (err) return reject(new Error('DB_SELECT_ERROR: ' + err.message));
-                    resolve(result?.[0]);
+                    const rows = result as { [key: string]: any }[];
+                    resolve(rows[0]);
                 }
             );
         });
@@ -46,7 +47,7 @@ export async function POST(req) {
             headers: { 'Content-Type': 'application/json' },
         });
 
-    } catch (error) {
+    } catch (error:any) {
         console.error('ERROR:', error); // Logs full error to terminal
         return new Response(JSON.stringify({ message: error.message || 'Internal server error' }), {
             status: 500,

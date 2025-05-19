@@ -54,6 +54,7 @@ export default function About() {
     {
       title: contactus.title,
       display: contactus.display,
+      items: [],
     },
   ];
 

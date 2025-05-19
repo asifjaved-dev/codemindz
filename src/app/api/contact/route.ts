@@ -23,7 +23,7 @@ export async function GET() {
     }
 }
 
-export async function DELETE(request) {
+export async function DELETE(request:any) {
     try {
         const body = await request.json();
         const { id } = body;
@@ -34,7 +34,7 @@ export async function DELETE(request) {
             });
         }
 
-        const result = await new Promise((resolve, reject) => {
+        const result:any = await new Promise((resolve, reject) => {
             db.query('DELETE FROM contact WHERE id = ?', [id], (err, results) => {
                 if (err) return reject(err);
                 resolve(results);
@@ -63,7 +63,7 @@ export async function DELETE(request) {
 }
 
 
-export async function POST(req) {
+export async function POST(req:any) {
     try {
         const { username, email, phone,  message } = await req.json();
 

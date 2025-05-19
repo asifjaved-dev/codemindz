@@ -25,7 +25,7 @@ const newsletter = {
 
 const contactus = {
   display: true,
-  title: <>Contact Us</>,
+  title: "Contact Us",
   description: (
     <>
       Contact us for more details.
